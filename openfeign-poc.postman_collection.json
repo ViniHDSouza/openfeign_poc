@@ -1,0 +1,39 @@
+{
+  "info": {
+    "_postman_id": "openfeign-poc-collection-001",
+    "name": "OpenFeign POC",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Buscar todos os posts",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/posts-feign",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["posts-feign"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Buscar post por ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/posts-feign/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["posts-feign", "1"]
+        }
+      },
+      "response": []
+    }
+  ]
+}
