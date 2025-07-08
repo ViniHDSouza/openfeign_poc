@@ -30,4 +30,13 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         ApiError apiError = new ApiError(HttpStatus.INTERNAL_SERVER_ERROR, ex.getMessage());
         return new ResponseEntity<>(apiError, apiError.getStatus());
     }
+
+    @ExceptionHandler({ Exception.class })
+    public ResponseEntity<Object> handleAll(Exception ex) {
+        // Logar a exceção é uma boa prática em produção
+        logger.error("Erro inesperado ocorrido: ", ex);
+        ApiError apiError = new ApiError(
+                HttpStatus.INTERNAL_SERVER_ERROR, "Ocorreu um erro inesperado. Por favor, tente novamente.");
+        return new ResponseEntity<>(apiError, apiError.getStatus());
+    }
 }

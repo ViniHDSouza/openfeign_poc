@@ -14,7 +14,11 @@ name:
 url:
     A URL base do serviço que o cliente irá consumir. Neste caso, estamos usando a API pública do JSONPlaceholder.
  */
-@FeignClient(name = "PostClient", url = "https://jsonplaceholder.typicode.com", configuration = br.com.estudo.openfeign_poc.v1.config.ClientConfig.class)
+@FeignClient(
+        name = "PostClient",
+        url = "https://jsonplaceholder.typicode.com",
+        configuration = br.com.estudo.openfeign_poc.v1.config.ClientConfig.class
+        )
 public interface PostClient {
     @GetMapping("/posts")
     List<PostDTO> getPosts();
