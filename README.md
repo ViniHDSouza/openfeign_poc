@@ -56,8 +56,7 @@ A anotação `@FeignClient` é o coração da configuração. Vamos analisar cad
 @FeignClient(
     name = "PostClient",
     url = "https://jsonplaceholder.typicode.com",
-    configuration = ClientConfig.class,
-    fallback = PostClientFallback.class
+    configuration = ClientConfig.class
 )
 public interface PostClient { /* ... */ }
 ```
@@ -65,7 +64,6 @@ public interface PostClient { /* ... */ }
 - **`name = "PostClient"`**: Este é um nome **lógico** e **obrigatório**. Ele não é usado apenas para identificação, mas é a chave que o Spring Cloud usa para vincular configurações específicas, como as do **Resilience4J** e do Load Balancer (se estivesse usando Eureka ou Consul).
 - **`url = "..."`**: A URL base da API que será consumida. Todas as requisições definidas na interface serão relativas a esta URL.
 - **`configuration = ClientConfig.class`**: Aponta para uma classe de configuração específica para *este cliente*. Neste projeto, a `ClientConfig` define um `Bean` para o nosso `CustomErrorDecoder`. Isso permite customizar o comportamento do cliente sem poluir a configuração global da aplicação.
-- **`fallback = PostClientFallback.class`**: Aponta para a classe que será invocada caso o Circuit Breaker esteja "aberto" ou ocorra uma falha que o acione. É o nosso "plano B".
 
 
 ### 2. Tratamento de Erros Personalizado (`CustomErrorDecoder.java`)
@@ -122,7 +120,6 @@ Compreender como os componentes interagem é fundamental.
 4.  A exceção sobe a pilha de chamadas.
 5.  O **`GlobalExceptionHandler`** captura a `ResourceNotFoundException`.
 6.  Ele cria uma resposta JSON de erro estruturada com status `404 NOT_FOUND` e a retorna ao usuário.
-7.  **O fallback não é acionado aqui**, pois o erro 404 não é, por padrão, considerado uma falha que abre o circuit breaker.
 
 👨‍💻 Autor
 Vinicius Henrique Dias de Souza
