@@ -3,11 +3,8 @@
 Este projeto é uma Prova de Conceito (PoC) desenvolvida para dissecar e demonstrar as capacidades do **Spring Cloud OpenFeign** em um ambiente Spring Boot. O objetivo é ir além do básico e explorar como construir clientes HTTP robustos e resilientes, cobrindo:
 
 - **Clientes Declarativos**: A essência do OpenFeign.
-- **Resiliência e Circuit Breaking**: Proteção contra falhas com **Resilience4J**.
-- **Mecanismos de Fallback**: Estratégias para lidar com a indisponibilidade de serviços.
 - **Tratamento de Erros Customizado**: Transformando erros HTTP em exceções de negócio.
 - **Interceptação de Requisições**: Adição de headers globais para segurança e rastreamento.
-- **Estratégias de Teste**: Uso de **WireMock** para testes de integração isolados.
 
 ---
 
